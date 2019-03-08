@@ -1,5 +1,5 @@
-let Types = ./types.dhall
-let Functions = ./functions.dhall
+let Types = ./generic/types.dhall
+let Functions = ./generic/functions.dhall
 
 let id = "Id"
 let artist = "Artist"
