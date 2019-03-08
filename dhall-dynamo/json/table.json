@@ -1,0 +1,73 @@
+{
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "Id",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "Artist",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "Song",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "Year",
+      "AttributeType": "N"
+    }
+  ],
+  "KeySchema": [
+    {
+      "KeyType": "HASH",
+      "AttributeName": "Id"
+    }
+  ],
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "ArtistSongIndex",
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+        "WriteCapacityUnits": 3,
+        "ReadCapacityUnits": 3
+      },
+      "KeySchema": [
+        {
+          "KeyType": "HASH",
+          "AttributeName": "Artist"
+        },
+        {
+          "KeyType": "RANGE",
+          "AttributeName": "Song"
+        }
+      ]
+    },
+    {
+      "IndexName": "YearArtistSongIndex",
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+        "WriteCapacityUnits": 2,
+        "ReadCapacityUnits": 2
+      },
+      "KeySchema": [
+        {
+          "KeyType": "HASH",
+          "AttributeName": "Year"
+        },
+        {
+          "KeyType": "RANGE",
+          "AttributeName": "Artist"
+        }
+      ]
+    }
+  ],
+  "ProvisionedThroughput": {
+    "WriteCapacityUnits": 2,
+    "ReadCapacityUnits": 2
+  },
+  "TableName": "Songs"
+}
