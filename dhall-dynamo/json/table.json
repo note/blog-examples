@@ -45,7 +45,7 @@
       ]
     },
     {
-      "IndexName": "YearArtistSongIndex",
+      "IndexName": "YearArtistIndex",
       "Projection": {
         "ProjectionType": "ALL"
       },

@@ -5,22 +5,12 @@ let id = "Id"
 let artist = "Artist"
 let song = "Song"
 let year = "Year"
-let throughput = {
-				   	WriteCapacityUnits = 2,
-				 	ReadCapacityUnits  = 2
-				 }
-
-
-let IndexComponent = {
-	KeyType 		: Text,
-	AttributeName 	: Text
-}
-
+let defaultThroughput = Functions.mkThroughput 2 2
 
 in
 
 { 
-	TableName = "users", 
+	TableName = "Songs", 
 	KeySchema = [Functions.mkHashIndex id],
 	AttributeDefinitions = [
 		Functions.mkStringAttribute id,
@@ -29,8 +19,8 @@ in
 		Functions.mkNumberAttribute year
 	],
 	GlobalSecondaryIndexes = [
-		Functions.mkIndex [Functions.mkHashIndex artist, Functions.mkRangeIndex song]   throughput,
-		Functions.mkIndex [Functions.mkHashIndex year,   Functions.mkRangeIndex artist] throughput
+		Functions.mkIndex [Functions.mkHashIndex artist, Functions.mkRangeIndex song]   (Functions.mkThroughput 3 3),
+		Functions.mkIndex [Functions.mkHashIndex year,   Functions.mkRangeIndex artist] defaultThroughput
 	],
-    ProvisionedThroughput  = throughput
+    ProvisionedThroughput  = defaultThroughput
 }

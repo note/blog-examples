@@ -34,6 +34,13 @@ let mkAttribute =
   }
 let mkStringAttribute = mkAttribute "S"
 let mkNumberAttribute = mkAttribute "N"
+let mkThroughput = 
+	λ(writeUnits 		: Natural)
+  → λ(readUnits 		: Natural)
+  → {
+       WriteCapacityUnits = writeUnits,
+       ReadCapacityUnits  = readUnits
+	}
 
 in {
 	mkIndexComponent = mkIndexComponent,
@@ -42,5 +49,6 @@ in {
 	mkIndex = mkIndex,
 	mkAttribute = mkAttribute,
 	mkStringAttribute = mkStringAttribute,
-	mkNumberAttribute = mkNumberAttribute
+	mkNumberAttribute = mkNumberAttribute,
+	mkThroughput     = mkThroughput
 }
