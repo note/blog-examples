@@ -1,12 +1,7 @@
-let ProvisionedThroughput = {
-	WriteCapacityUnits: Natural,
-	ReadCapacityUnits:  Natural
-}
+-- types are the same as in `types.dhall` except of `AttributeType` which is an union type instead of `Text`
+-- in real example it would be beneficial to make more of them more specific (e.g. KeySchemaItem.KeyType)
 
-let KeySchemaItem = {
-	KeyType       : Text,
-	AttributeName : Text
-}
+let Types = ./types.dhall
 
 let AttributeType = < Number : {} | Binary : {} | String : {} >
 let attributeType = constructors AttributeType
@@ -16,33 +11,14 @@ let AttributeDefinition = {
 	AttributeType: AttributeType
 }
 
-let ProvisionedThroughput = {
-	WriteCapacityUnits: Natural,
-	ReadCapacityUnits:  Natural
-}
-
-let IndexComponent = {
-	KeyType 		: Text,
-	AttributeName 	: Text
-}
-
-let GlobalSecondaryIndex = {
-	IndexName: Text,
-	Projection: {
-		ProjectionType: Text
-	},
-	KeySchema: List IndexComponent,
-	ProvisionedThroughput: ProvisionedThroughput
-}
-
 in
 
 {
 	attributeType 		  = attributeType,
 	AttributeType 		  = AttributeType,
 	AttributeDefinition	  = AttributeDefinition,
-	GlobalSecondaryIndex  = GlobalSecondaryIndex,
-	IndexComponent		  = IndexComponent,
-	KeySchemaItem		  = KeySchemaItem,
-	ProvisionedThroughput = ProvisionedThroughput
+	GlobalSecondaryIndex  = Types.GlobalSecondaryIndex,
+	IndexComponent		  = Types.IndexComponent,
+	KeySchemaItem		  = Types.KeySchemaItem,
+	ProvisionedThroughput = Types.ProvisionedThroughput
 }
