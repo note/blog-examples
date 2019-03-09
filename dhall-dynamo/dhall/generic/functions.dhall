@@ -32,6 +32,7 @@ let mkAttribute =
   	AttributeName = attributeName,
 	AttributeType = attributeType
   }
+-- partially applied functions for each of types:
 let mkStringAttribute = mkAttribute "S"
 let mkNumberAttribute = mkAttribute "N"
 let mkThroughput = 
