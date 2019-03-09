@@ -1,11 +1,11 @@
-let Types = ./generic2/types.dhall
-let Schema = ./generic2/schema.dhall
-let Functions = ./generic2/functions.dhall
+let Types = ./generic/types.dhall
+let Schema = ./generic/schema.dhall
+let Functions = ./generic/functions.dhall
 
-let RichTypes = ./generic2/richTypes.dhall
-let RichSchema = ./generic2/richSchema.dhall
+let RichTypes = ./generic/richTypes.dhall
+let RichSchema = ./generic/richSchema.dhall
 
-let transformSchema = ./generic2/transformSchema.dhall
+let transformSchema = ./generic/transformSchema.dhall
 
 let id = "Id"
 let artist = "Artist"
