@@ -10,7 +10,7 @@ This repository contains code used for blogpost TODO.
 
 ### How to run code in `dhall` directory
 
-First you need to install `dhall-to-json` according to [instructions][https://github.com/dhall-lang/dhall-lang/wiki/Getting-started%3A-Generate-JSON-or-YAML].
+First you need to install `dhall-to-json` according to [instructions](https://github.com/dhall-lang/dhall-lang/wiki/Getting-started%3A-Generate-JSON-or-YAML).
 
 Then:
 
