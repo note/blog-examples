@@ -3,6 +3,7 @@ let RichSchema = ./richSchema.dhall
 let Types = ./types.dhall
 
 let Prelude/List/map  = https://raw.githubusercontent.com/dhall-lang/Prelude/35deff0d41f2bf86c42089c6ca16665537f54d75/List/map
+sha256:401176938d3a994be6664f89702f5d7a5146535a017da509eb477af78c2349bc
 
 let transformAttributeType = 
 	λ(x : RichTypes.AttributeType)
