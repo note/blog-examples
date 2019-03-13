@@ -1,6 +1,6 @@
 ## Rewrite DynamoDB cli-input-json with Dhall
 
-This repository contains code used for blogpost TODO.
+This repository contains code used for blogpost (Replace JSON with Dhall: DynamoDB case study)[https://msitko.pl/blog/2019/03/13/replace-json-with-dhall.html]
 
 ### Structure
 
