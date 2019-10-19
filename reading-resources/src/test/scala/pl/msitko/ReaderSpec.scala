@@ -20,4 +20,14 @@ class ReaderSpec extends WordSpec with Matchers {
       ))
     }
   }
+
+  "readResourceUsingReader" should {
+    "work" in {
+      Reader.readResourceUsingReader should equal (List(
+        List("g", "h", "i"),
+        List("j", "k", "l")
+      ))
+    }
+  }
+
 }

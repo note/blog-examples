@@ -1,6 +1,6 @@
 package pl.msitko
 
-import java.io.File
+import java.io.{File, InputStreamReader}
 import java.net.URI
 import java.nio.file.Paths
 import java.nio.file.spi.FileSystemProvider
@@ -33,6 +33,13 @@ object Reader {
 
     val file = Paths.get(url.toURI).toFile
     CSVReader.open(file).all()
+  }
+
+  def readResourceUsingReader: List[List[String]] = {
+    val classloader = Thread.currentThread.getContextClassLoader
+    val stream = classloader.getResourceAsStream("resource.csv")
+    val reader = new InputStreamReader(stream, java.nio.charset.StandardCharsets.UTF_8)
+    CSVReader.open(reader).all()
   }
 
 }
