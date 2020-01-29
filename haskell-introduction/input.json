@@ -1,0 +1,24 @@
+[
+  {
+    "tag": "Comment",
+    "blogPostId": 1,
+    "content": "Some comment"
+  },
+  {
+    "tag": "BlogPost",
+    "id": 1,
+    "title": "Some blog post",
+    "summary": "Some comment"
+  },
+  {
+    "tag": "BlogPost",
+    "id": 2,
+    "title": "Another blog post",
+    "summary": "Some comment"
+  },
+  {
+    "tag": "Comment",
+    "blogPostId": 1,
+    "content": "Some comment"
+  }
+]
