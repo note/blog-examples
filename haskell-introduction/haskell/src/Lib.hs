@@ -17,3 +17,4 @@ data Activity = BlogPost { id       :: Int
               deriving (Generic, Show)
 
 instance ToJSON Activity
+instance FromJSON Activity
