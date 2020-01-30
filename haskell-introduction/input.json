@@ -8,17 +8,17 @@
     "tag": "BlogPost",
     "id": 1,
     "title": "Some blog post",
-    "summary": "Some comment"
+    "summary": "Some post"
   },
   {
     "tag": "BlogPost",
     "id": 2,
     "title": "Another blog post",
-    "summary": "Some comment"
+    "summary": "Another post"
   },
   {
     "tag": "Comment",
     "blogPostId": 1,
-    "content": "Some comment"
+    "content": "Another comment"
   }
 ]
