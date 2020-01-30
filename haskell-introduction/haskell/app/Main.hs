@@ -2,7 +2,6 @@ module Main where
 
 import qualified Data.ByteString.Lazy.Internal as C
 import Data.Aeson
-import Data.ByteString as BS (readFile)
 import Data.List
 import Control.Arrow
 import Lib
