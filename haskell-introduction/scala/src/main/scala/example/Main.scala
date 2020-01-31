@@ -9,18 +9,22 @@ import example.entities.Activity._
 
 object Main {
   def main(args: Array[String]): Unit = {
-    val commentsRes = for {
-      json <- parseFile(Paths.get("../input.json").toFile)
-      activities  <- json.as[List[Activity]]
-      comments    = activities.collect {
-        // we are interested only in comments but as Activity instances so the JSON output is "polymorphic"
-        case c: Comment => c: Activity
-      }
-    } yield comments
-
-    commentsRes match {
-      case Right(comments) => println(comments.asJson.spaces2)
-      case Left(e)         => println(s"Something went wrong: $e")
+    val activitiesEither = parseFile(Paths.get("../input.json").toFile).flatMap(_.as[List[Activity]])
+    val output = activitiesEither match {
+      case Right(activities) => process(activities)
+      case Left(e)           => s"Something went wrong: $e"
     }
+    println(output)
+  }
+
+  private def process(activities: List[Activity]): String =
+    onlyComments(activities).asJson.spaces2
+
+  private def onlyComments(activities: List[Activity]): List[Activity] =
+    activities.filter(isComment)
+
+  private def isComment(a: Activity): Boolean = a match {
+    case Comment(_, _) => true
+    case _             => false
   }
 }

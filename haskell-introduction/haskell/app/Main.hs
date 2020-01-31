@@ -7,15 +7,13 @@ import Control.Arrow
 import Lib
 
 main :: IO ()
-main = res >>= putStrLn
-       where res = (process >>> resultAsString) <$> ((eitherDecodeFileStrict "../input.json") :: IO (Either String [Activity]))
+main = do activitiesEither <- eitherDecodeFileStrict "../input.json" :: IO (Either String [Activity])
+          let output = case activitiesEither of (Right activities) -> C.unpackChars $ process activities
+                                                (Left e)           -> "Something went wrong: " ++ e
+              in (putStrLn output)
 
-resultAsString :: Either String C.ByteString -> String
-resultAsString (Right res)  = C.unpackChars res
-resultAsString (Left  e)    = "Something went wrong" ++ e
-
-process :: Either String [Activity] -> Either String C.ByteString
-process decoded = (onlyComments >>> encode) <$> decoded
+process :: [Activity] -> C.ByteString
+process activities = encode $ onlyComments activities
 
 onlyComments :: [Activity] -> [Activity]
 onlyComments activites = filter isComment activites

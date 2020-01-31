@@ -1,8 +1,6 @@
 {-# LANGUAGE DeriveGeneric #-}
 
-module Lib
-    ( Activity(BlogPost, Comment)
-    ) where
+module Lib ( Activity(BlogPost, Comment) ) where
 
 import Data.Aeson
 import GHC.Generics
