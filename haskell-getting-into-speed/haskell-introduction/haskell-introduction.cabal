@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 730f00e94c72e5069ec05959dc07dd9a2f5b9a888f58a294f8682492526f0556
+-- hash: 8b524461c2cbdc6de0144624d5eb6879e978e0f8f275303d3d407413cef5d425
 
 name:           haskell-introduction
 version:        0.1.0.0
@@ -37,7 +37,7 @@ library
     , bytestring
   default-language: Haskell2010
 
-executable haskell-exe
+executable haskell-introduction-exe
   main-is: Main.hs
   other-modules:
       Paths_haskell_introduction
@@ -48,10 +48,10 @@ executable haskell-exe
       aeson
     , base >=4.7 && <5
     , bytestring
-    , haskell
+    , haskell-introduction
   default-language: Haskell2010
 
-test-suite haskell-test
+test-suite haskell-introduction-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
@@ -63,5 +63,5 @@ test-suite haskell-test
       aeson
     , base >=4.7 && <5
     , bytestring
-    , haskell
+    , haskell-introduction
   default-language: Haskell2010

@@ -28,7 +28,7 @@ library:
   source-dirs: src
 
 executables:
-  haskell-exe:
+  haskell-introduction-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -36,10 +36,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - haskell
+    - haskell-introduction
 
 tests:
-  haskell-test:
+  haskell-introduction-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -47,4 +47,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - haskell
+    - haskell-introduction
