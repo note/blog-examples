@@ -1,6 +1,8 @@
 #!/bin/bash
 
-cd haskell
+set -e
+
+cd haskell-introduction
 stack run | jq --sort-keys '.' > ../out-haskell
 
 cd ../scala
