@@ -8,8 +8,9 @@ import Lib
 
 main :: IO ()
 main = do activitiesEither <- eitherDecodeFileStrict "../input.json" :: IO (Either String [Activity])
-          let output = case activitiesEither of (Right activities) -> C.unpackChars $ process activities
-                                                (Left e)           -> "Something went wrong: " ++ e
+          let output = case activitiesEither of 
+                            (Right activities) -> C.unpackChars $ process activities
+                            (Left e)           -> "Something went wrong: " ++ e
               in (putStrLn output)
 
 process :: [Activity] -> C.ByteString

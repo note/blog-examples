@@ -17,13 +17,13 @@ object Main {
     println(output)
   }
 
-  private def process(activities: List[Activity]): String =
+  def process(activities: List[Activity]): String =
     onlyComments(activities).asJson.spaces2
 
-  private def onlyComments(activities: List[Activity]): List[Activity] =
+  def onlyComments(activities: List[Activity]): List[Activity] =
     activities.filter(isComment)
 
-  private def isComment(a: Activity): Boolean = a match {
+  def isComment(a: Activity): Boolean = a match {
     case Comment(_, _) => true
     case _             => false
   }
