@@ -8,7 +8,8 @@ import Lib
 
 main :: IO ()
 main = do activitiesEither <- eitherDecodeFileStrict "../input.json" :: IO (Either String [Activity])
-          let output = case activitiesEither of 
+          let output = case activitiesEither of
+                            -- It will not work properly for UTF-8 characters but for sake of a demonstration it's good enough
                             (Right activities) -> C.unpackChars $ process activities
                             (Left e)           -> "Something went wrong: " ++ e
               in (putStrLn output)
