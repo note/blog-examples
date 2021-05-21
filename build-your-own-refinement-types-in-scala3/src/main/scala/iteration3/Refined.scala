@@ -6,17 +6,17 @@ import scala.quoted.{Expr, Quotes}
 import Pred.*
 
 object auto:
-  implicit inline def mkValidatedInt[V <: Int with Singleton, E <: Pred](v: V): Refined[V, E] =
+  implicit inline def mkValidatedInt[V <: Int & Singleton, E <: Pred](v: V): Refined[V, E] =
     inline if checkPredicateInt[V, E]
     then Refined.unsafeApply(v)
     else error("Validation failed")
 
-  implicit inline def mkValidatedString[V <: String with Singleton, E <: Pred](v: V): Refined[V, E] =
+  implicit inline def mkValidatedString[V <: String & Singleton, E <: Pred](v: V): Refined[V, E] =
     inline if checkPredicateString[V, E]
     then Refined.unsafeApply(v)
     else error("Validation failed")
 
-  transparent inline def checkPredicateInt[V <: Int with Singleton, E <: Pred]: Boolean =
+  transparent inline def checkPredicateInt[V <: Int & Singleton, E <: Pred]: Boolean =
     inline erasedValue[E] match
       case _: LowerThan[t] =>
         inline if erasedValue[V] < erasedValue[t]
@@ -32,7 +32,7 @@ object auto:
       case _: And[a, b] =>
         checkPredicateInt[V, a] && checkPredicateInt[V, b]
 
-  transparent inline def checkPredicateString[V <: String with Singleton, E <: Pred]: Boolean =
+  transparent inline def checkPredicateString[V <: String & Singleton, E <: Pred]: Boolean =
     inline erasedValue[E] match
       case _: StartsWith[t] =>
         inline if StringMacros.startsWith(constValue[V], constValue[t])
@@ -56,8 +56,8 @@ opaque type Refined[+T, Pred] = T
 object Refined:
   // We cannot simply `implicit inline def mk...(): Refined` because inline and opaque types do not compose
   // Read about it here: https://github.com/lampepfl/dotty/issues/6802
-  private [iteration3] def unsafeApply[T <: Int with Singleton, E <: Pred](i: T): T Refined E = i
-  private [iteration3] def unsafeApply[T <: String with Singleton, E <: Pred](i: T): T Refined E = i
+  private [iteration3] def unsafeApply[T <: Int & Singleton, E <: Pred](i: T): T Refined E = i
+  private [iteration3] def unsafeApply[T <: String & Singleton, E <: Pred](i: T): T Refined E = i
 
 object Demo:
   import auto.*
